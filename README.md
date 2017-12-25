@@ -23,5 +23,8 @@ Now you're ready to rumble!
        Copy the values from the GDAX web page. 
 3.  Run auth.py, follow the prompts when prompted
 
+python auth.py
 
+pip2 install
+python server/auth.py
 
