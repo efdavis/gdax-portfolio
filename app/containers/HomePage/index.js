@@ -15,6 +15,7 @@ import H2 from 'components/H2';
 import Header from 'components/Header';
 import { Helmet } from 'react-helmet';
 
+
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (

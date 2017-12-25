@@ -14,6 +14,7 @@ import H1 from 'components/H1';
 import Header from 'components/Header';
 // import H2 from 'components/H2';
 import { Helmet } from 'react-helmet';
+import data from 'mockData.json';
 
 
 export default class Portfolio extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -28,6 +29,7 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
         <H1>
             Portfolio info
         </H1>
+        {console.log(data)};
       </div>
     );
   }

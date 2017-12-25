@@ -45,4 +45,4 @@ auth = CoinbaseExchangeAuth(api_key, api_secret, api_pass)
   
 # Get accounts and print response
 r = requests.get(api_url + 'accounts', auth=auth)
-print r.json()
+out = [s.encode('utf-8') for s in r.json()]

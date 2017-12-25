@@ -17,8 +17,10 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
         <Img src={Banner} alt="gdax" />
         <NavBar>
           <HeaderLink to="/">
+            Home
           </HeaderLink>
           <HeaderLink to="/portfolio">
+            Portfolio
           </HeaderLink>
         </NavBar>
       </div>
