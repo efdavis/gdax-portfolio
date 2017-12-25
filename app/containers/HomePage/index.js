@@ -12,11 +12,8 @@
 import React from 'react';
 import H1 from 'components/H1';
 import H2 from 'components/H2';
-import { FormattedMessage } from 'react-intl';
+import Header from 'components/Header';
 import { Helmet } from 'react-helmet';
-import messages from './messages';
-import Banner from '../../images/banner.jpg';
-import Img from './Img';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -26,12 +23,12 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
           <title>Home Page</title>
           <meta name="description" content="GDAX Portfolio homepage" />
         </Helmet>
-        <Img src={Banner} alt="gdax" />
+        <Header />
         <H1>
-          <FormattedMessage {...messages.header} />
+          GDAX Portfolio
         </H1>
         <H2>
-          <FormattedMessage {...messages.subHeader} />
+          A way to figure out how much value you have across currencies
         </H2>
       </div>
     );

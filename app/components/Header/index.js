@@ -1,26 +1,24 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-
-import A from './A';
-import Img from './Img';
+import styled from 'styled-components';
 import NavBar from './NavBar';
 import HeaderLink from './HeaderLink';
-import Banner from './banner.jpg';
-import messages from './messages';
+import Banner from '../../images/banner.jpg';
+
+const Img = styled.img`
+  width: 25rem;
+  margin: 0 auto;
+  display: block;
+`;
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <A href="https://twitter.com/mxstbr">
-          <Img src={Banner} alt="react-boilerplate - Logo" />
-        </A>
+        <Img src={Banner} alt="gdax" />
         <NavBar>
           <HeaderLink to="/">
-            <FormattedMessage {...messages.home} />
           </HeaderLink>
-          <HeaderLink to="/features">
-            <FormattedMessage {...messages.features} />
+          <HeaderLink to="/portfolio">
           </HeaderLink>
         </NavBar>
       </div>
