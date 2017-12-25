@@ -15,6 +15,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
+// import Portfolio from 'containers/Portfolio/Loadable';
+// <Route path="/portfolio" component={Portfolio} />
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 export default function App() {
