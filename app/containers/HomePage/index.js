@@ -10,19 +10,29 @@
  */
 
 import React from 'react';
+import H1 from 'components/H1';
+import H2 from 'components/H2';
 import { FormattedMessage } from 'react-intl';
+import { Helmet } from 'react-helmet';
 import messages from './messages';
+import Banner from '../../images/banner.jpg';
+import Img from './Img';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <h1>
+        <Helmet>
+          <title>Home Page</title>
+          <meta name="description" content="GDAX Portfolio homepage" />
+        </Helmet>
+        <Img src={Banner} alt="gdax" />
+        <H1>
           <FormattedMessage {...messages.header} />
-        </h1>
-        <h2>
+        </H1>
+        <H2>
           <FormattedMessage {...messages.subHeader} />
-        </h2>
+        </H2>
       </div>
     );
   }
