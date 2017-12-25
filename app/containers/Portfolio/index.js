@@ -11,12 +11,13 @@
 
 import React from 'react';
 import H1 from 'components/H1';
-import H2 from 'components/H2';
 import Header from 'components/Header';
+// import H2 from 'components/H2';
 import { Helmet } from 'react-helmet';
+import data from 'mockData.json';
 
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class Portfolio extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
@@ -26,11 +27,9 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         </Helmet>
         <Header />
         <H1>
-          GDAX Portfolio
+            Portfolio info
         </H1>
-        <H2>
-          A way to figure out how much value you have across currencies
-        </H2>
+        {console.log(data)};
       </div>
     );
   }
