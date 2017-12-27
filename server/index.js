@@ -14,6 +14,13 @@ const app = express();
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
+app.get('/stuff/test', function(req, res) {
+  res.send('Hello Seattle\n');
+});
+
+
+
+
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),
@@ -24,6 +31,10 @@ setup(app, {
 const customHost = argv.host || process.env.HOST;
 const host = customHost || null; // Let http.Server use its default IPv6/4 host
 const prettyHost = customHost || 'localhost';
+
+
+
+
 
 // Start your app.
 app.listen(port, host, (err) => {
@@ -44,3 +55,4 @@ app.listen(port, host, (err) => {
     logger.appStarted(port, prettyHost);
   }
 });
+
