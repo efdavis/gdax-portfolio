@@ -1,0 +1,42 @@
+[
+  {
+    "available": 1.2104,
+    "balance": 1.2104000000000000,
+    "profile_id": "18139ba9-c1f1-40a0-a08a-eed91b1cbe8d",
+    "crrency": "LTC",
+    "hold": 0.0000000000000000,
+    "id": "2dc49d4e-3c7c-4c1c-a527-8dfad0a4835d"
+  },
+  {
+    "available": 0.16378663,
+    "balance": 0.1637866300000000,
+    "profile_id": "18139ba9-c1f1-40a0-a08a-eed91b1cbe8d",
+    "crrency": "ETH",
+    "hold": 0.0000000000000000,
+    "id": "1212e9d5-71b9-414d-9401-530ca1a0c40e"
+  },
+  {
+    "available": 0,
+    "balance": 0.0000000000000000,
+    "profile_id": "18139ba9-c1f1-40a0-a08a-eed91b1cbe8d",
+    "crrency": "BTC",
+    "hold": 0.0000000000000000,
+    "id": "8ccb2c91-2223-4642-8946-6976d019fcba"
+  },
+  {
+    "available": 0.457651699325,
+    "balance": 0.4576516993250000,
+    "profile_id": "18139ba9-c1f1-40a0-a08a-eed91b1cbe8d",
+    "crrency": "SD",
+    "hold": 0.0000000000000000,
+    "id": "3346295b-42ff-4d11-b958-96210867f40e"
+  },
+  {
+    "available": 0,
+    "balance": 0.0000000000000000,
+    "profile_id": "18139ba9-c1f1-40a0-a08a-eed91b1cbe8d",
+    "crrency": "BCH",
+    "hold": 0.0000000000000000,
+    "id": "422dc347-aadc-4475-afa3-95de52c0bfb1"
+  }
+]
