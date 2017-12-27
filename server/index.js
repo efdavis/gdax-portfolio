@@ -11,19 +11,17 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 const resolve = require('path').resolve;
 const app = express();
 
+const spawn = require('child_process').spawn;
 // Authentication endpoint
 app.get('/api/auth', (req, res) => {
   // Call Python authentication script
-  var spawn = require("child_process").spawn;
-  var process = spawn('python',["server/auth.py"]);
+  const process = spawn('python', ['server/auth.py']);
 
   // Listen for Python data to come back
-  process.stdout.on('data', function (data){
+  process.stdout.on('data', (data) => {
     // Send data back as JSON response
-      console.log(data);
-      res.setHeader("Content-type", "text/html; charset=utf-8");
-      res.send(data);
-      //res.json(data);
+    res.setHeader('Content-type', 'text/html', 'charset=utf-8');
+    res.send(data);
   });
 });
 
