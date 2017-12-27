@@ -48,4 +48,5 @@ r = requests.get(api_url + 'accounts', auth=auth)
 
 
 print r.content.decode('utf-8')
+sys.stdout.flush()
 

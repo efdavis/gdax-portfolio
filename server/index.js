@@ -11,9 +11,20 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 const resolve = require('path').resolve;
 const app = express();
 
-// If you need a backend, e.g. an API, add your custom backend-specific middleware here
+// Authentication endpoint
 app.get('/api/auth', (req, res) => {
-  res.send('Hello Seattle\n');
+  // Call Python authentication script
+  var spawn = require("child_process").spawn;
+  var process = spawn('python',["server/auth.py"]);
+
+  // Listen for Python data to come back
+  process.stdout.on('data', function (data){
+    // Send data back as JSON response
+      console.log(data);
+      res.setHeader("Content-type", "text/html; charset=utf-8");
+      res.send(data);
+      //res.json(data);
+  });
 });
 
 // In production we need to pass these values in instead of relying on webpack
