@@ -3163,6 +3163,10 @@ forwarded@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.1.tgz#8a4e30c640b05395399a3549c730257728048961"
 
+"freckle@>= 0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/freckle/-/freckle-0.0.1.tgz#766dab2ebc63221262b751bb070dbc634c186121"
+
 fresh@0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.0.tgz#f474ca5e6a9246d6fd8e0953cfa9b9c805afa78e"
@@ -5640,7 +5644,7 @@ onetime@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/onetime/-/onetime-1.1.0.tgz#a1f7838f8314c516f05ecefcbc4ccfe04b4ed789"
 
-optimist@^0.6.1:
+"optimist@>= 0.1.5", optimist@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
   dependencies:
@@ -5930,6 +5934,13 @@ pinkie-promise@^2.0.0:
 pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
+
+pip@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/pip/-/pip-0.0.1.tgz#cf0b55a81ecbbf47f85045ccb5fe9afa05a7269e"
+  dependencies:
+    freckle ">= 0.0.1"
+    optimist ">= 0.1.5"
 
 pkg-dir@^1.0.0:
   version "1.0.0"
