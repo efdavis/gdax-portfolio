@@ -12,7 +12,6 @@
 import React from 'react';
 import H1 from 'components/H1';
 import H2 from 'components/H2';
-import H3 from 'components/H3';
 import Header from 'components/Header';
 import styled from 'styled-components';
 // import H2 from 'components/H2';
