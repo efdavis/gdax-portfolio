@@ -14,6 +14,7 @@ import H1 from 'components/H1';
 import H2 from 'components/H2';
 import H3 from 'components/H3';
 import Header from 'components/Header';
+import styled from 'styled-components';
 // import H2 from 'components/H2';
 
 import { Helmet } from 'react-helmet';
@@ -21,6 +22,18 @@ import wallet from 'mockWallet.json';
 import currentPrice from 'currentPrices.json';
 import userData from 'userData.json';
 
+const TableWrapper = styled.div`
+  margin: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  grid-template-rows: 100vh;
+`;
+
+const TableColumn = styled.div `
+  padding: 20px;
+  text-align: center;
+`;
 
 export default class Portfolio extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -54,29 +67,39 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
         <H1>
             Portfolio info
         </H1>
-        <H3>
-          <H2>Current Holdings</H2>
+        <TableWrapper>
+
+          <TableColumn>
+            <H2>Current Holdings</H2>
           LTC {walletLTC} <br></br>
           ETH {walletETH} <br></br>
           BTC {walletBTC} <br></br>
           Fiat ${walletFiat} <br></br>
           BCH {walletBCH} <br></br>
-          <H2>Current Prices</H2>
+          </TableColumn>
+
+          <TableColumn>
+            <H2>Current Prices</H2>
           LTC ${priceLTC} <br></br>
           ETH ${priceETH} <br></br>
           BTC ${priceBTC} <br></br>
           BCH ${priceBCH} <br></br>
-          <H2>Amount in USD</H2>
+          </TableColumn>
+          <TableColumn>
+            <H2>Amount in USD</H2>
           LTC ${usdLTC} <br></br>
           ETH ${usdETH} <br></br>
           BTC ${usdBTC} <br></br>
           BCH ${usdBCH} <br></br>
-          <H2>Analytics</H2>
+          </TableColumn>
+          <TableColumn>
+            <H2>Analytics</H2>
           Initial Investment ${userData[0].money_in} <br></br>
           Total Holdings ${totalHoldings} <br></br>
-          Total Gain/Loss ${totalHoldings - userData[0].money_in} <br></br>
+          Total Gain/Loss ${(totalHoldings - userData[0].money_in).toFixed(2)} <br></br>
           Percent Gain/Loss {((1 - (totalHoldings / userData[0].money_in)) * -100).toFixed(1)}% <br></br>
-        </H3>
+          </TableColumn>
+        </TableWrapper>
       </div>
 
     );
