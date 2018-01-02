@@ -5,7 +5,7 @@ import HeaderLink from './HeaderLink';
 import Banner from '../../images/banner.jpg';
 
 const Img = styled.img`
-  width: 25rem;
+  width: 18rem;
   margin: 0 auto;
   display: block;
 `;
