@@ -1,6 +1,6 @@
 [
   {
-    "available": 236.96,
+    "available": 245.5,
     "balance": 272.59,
     "profile_id": "18139ba9-c1f1-40a0-a08a-eed91b1cbe8d",
     "crrency": "LTC",
@@ -8,7 +8,7 @@
     "id": "2dc49d4e-3c7c-4c1c-a527-8dfad0a4835d"
   },
   {
-    "available": 725.11,
+    "available": 926.8,
     "balance": 0.1637866300000000,
     "profile_id": "18139ba9-c1f1-40a0-a08a-eed91b1cbe8d",
     "crrency": "ETH",
@@ -16,7 +16,7 @@
     "id": "1212e9d5-71b9-414d-9401-530ca1a0c40e"
   },
   {
-    "available": 15980.07,
+    "available": 14847.07,
     "balance": 0.0000000000000000,
     "profile_id": "18139ba9-c1f1-40a0-a08a-eed91b1cbe8d",
     "crrency": "BTC",
