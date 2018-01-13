@@ -16,8 +16,7 @@ class myWebsocketClient(gdax.WebsocketClient):
         if 'price' in msg and 'type' in msg:
             if (not self.found_btc):
                 if (msg["product_id"] == 'BTC-USD'):
-                    price = "{:.2f}".format(float(msg["price"]))
-                    self.prices.append(("BTC", price))
+                    self.prices.append(("BTC", "{:.2f}".format(float(msg["price"]))))
                     self.found_btc = True
             if (not self.found_eth):
                 if (msg["product_id"] == 'ETH-USD'):
@@ -35,8 +34,7 @@ class myWebsocketClient(gdax.WebsocketClient):
                     self.prices.append(("LTC", price))
                     self.found_ltc = True
     def on_close(self):
-        print self.prices
-        print "close"
+        return self.prices
 
 ws_client = myWebsocketClient()
 ws_client.start()
@@ -44,5 +42,7 @@ ws_client.start()
 while ((not ws_client.found_eth) and (not ws_client.found_btc) and (not ws_client.found_ltc) and (not ws_client.found_bch)):
     time.sleep(1)
     #keep going
+
+print ws_client.prices
 
 ws_client.close()

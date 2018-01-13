@@ -25,6 +25,19 @@ app.get('/api/auth', (req, res) => {
   });
 });
 
+// Price ticker endpoint
+app.get('/api/ticker', (req, res) => {
+  const process = spawn('python', ['server/market-data.py']);
+
+  // Listen for Python data to come back
+  process.stdout.on('data', (data) => {
+   
+    // Send data back as JSON response
+    res.setHeader('Content-type', 'text/html', 'charset=utf-8');
+    res.send(data);
+  });
+});
+
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),
