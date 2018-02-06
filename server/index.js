@@ -31,7 +31,6 @@ app.get('/api/ticker', (req, res) => {
 
   // Listen for Python data to come back
   process.stdout.on('data', (data) => {
-   
     // Send data back as JSON response
     res.setHeader('Content-type', 'text/html', 'charset=utf-8');
     res.send(data);

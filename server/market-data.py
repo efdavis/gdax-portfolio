@@ -33,8 +33,6 @@ class myWebsocketClient(gdax.WebsocketClient):
                     price = "{:.2f}".format(float(msg["price"]))
                     self.prices.append(("LTC", price))
                     self.found_ltc = True
-    def on_close(self):
-        return self.prices
 
 ws_client = myWebsocketClient()
 ws_client.start()
@@ -44,5 +42,8 @@ while ((not ws_client.found_eth) and (not ws_client.found_btc) and (not ws_clien
     #keep going
 
 print ws_client.prices
+
+priceDict = dict(ws_client.prices)
+print priceDict
 
 ws_client.close()
