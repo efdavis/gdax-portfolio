@@ -1,4 +1,4 @@
-import gdax, time
+import gdax, time, json
 
 # Get price ticker information from feed
 class myWebsocketClient(gdax.WebsocketClient):
@@ -10,29 +10,30 @@ class myWebsocketClient(gdax.WebsocketClient):
         self.found_btc = False
         self.found_ltc = False
         self.found_bch = False
-        self.prices = []
+        self.prices = {}
+
+    def on_close(self):
+        return #do nothing, supress message
 
     def on_message(self, msg):
         if 'price' in msg and 'type' in msg:
             if (not self.found_btc):
                 if (msg["product_id"] == 'BTC-USD'):
-                    self.prices.append(("BTC", "{:.2f}".format(float(msg["price"]))))
+                    self.prices["BTC"] = "{:.2f}".format(float(msg["price"]))
                     self.found_btc = True
             if (not self.found_eth):
                 if (msg["product_id"] == 'ETH-USD'):
-                    price = "{:.2f}".format(float(msg["price"]))
-                    self.prices.append(("ETH", price))
+                    self.prices["ETH"] = "{:.2f}".format(float(msg["price"]))
                     self.found_eth = True
             if (not self.found_bch):
                 if (msg["product_id"] == 'BCH-USD'):
-                    price = "{:.2f}".format(float(msg["price"]))
-                    self.prices.append(("BCH", price))
+                    self.prices["BCH"] = "{:.2f}".format(float(msg["price"]))
                     self.found_bch = True
             if (not self.found_ltc):
                 if (msg["product_id"] == 'LTC-USD'):
-                    price = "{:.2f}".format(float(msg["price"]))
-                    self.prices.append(("LTC", price))
+                    self.prices["LTC"] = "{:.2f}".format(float(msg["price"]))
                     self.found_ltc = True
+                    
 
 ws_client = myWebsocketClient()
 ws_client.start()
@@ -41,9 +42,6 @@ while ((not ws_client.found_eth) and (not ws_client.found_btc) and (not ws_clien
     time.sleep(1)
     #keep going
 
-print ws_client.prices
-
-priceDict = dict(ws_client.prices)
-print priceDict
+print json.dumps(ws_client.prices)
 
 ws_client.close()
