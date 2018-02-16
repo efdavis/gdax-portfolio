@@ -4,20 +4,24 @@ const express = require('express');
 const logger = require('./logger');
 
 const argv = require('./argv');
-const port = require('./port');
+const httpPort = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
 const resolve = require('path').resolve;
 
-var http = require('http');
-var https = require('https');
-var app = express();
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
 
-var secureServer = https.createServer('asdfasdf');
+const privateKey  = fs.readFileSync('static/localhost.key', 'utf8');
+const certificate = fs.readFileSync('static/localhost.crt', 'utf8');
+const credentials = {key: privateKey, cert: certificate};
+
+const app = express();
 
 // Path for serving static files
-app.use('/static', express.static('static'))
+app.use('/static', express.static('static'));
 
 const spawn = require('child_process').spawn;
 // Authentication endpoint
@@ -59,8 +63,7 @@ const prettyHost = customHost || 'localhost';
 
 
 // Start your app - works for both http and https servers
-var startApp = function(app) 
-{
+const startApp = function (server, port) {
   server.listen(port, host, (err) => {
     if (err) {
       return logger.error(err.message);
@@ -79,8 +82,10 @@ var startApp = function(app)
       logger.appStarted(port, prettyHost);
     }
   });
-}
+};
 
-var server = http.createServer(app);
-console.log("about to start the app");
-startApp(server);
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
+
+startApp(httpServer, httpPort);
+startApp(httpsServer, 8443);
