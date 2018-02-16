@@ -9,7 +9,15 @@ const setup = require('./middlewares/frontendMiddleware');
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
 const resolve = require('path').resolve;
-const app = express();
+
+var http = require('http');
+var https = require('https');
+var app = express();
+
+var secureServer = https.createServer('asdfasdf');
+
+// Path for serving static files
+app.use('/static', express.static('static'))
 
 const spawn = require('child_process').spawn;
 // Authentication endpoint
@@ -37,6 +45,7 @@ app.get('/api/ticker', (req, res) => {
   });
 });
 
+
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),
@@ -48,23 +57,30 @@ const customHost = argv.host || process.env.HOST;
 const host = customHost || null; // Let http.Server use its default IPv6/4 host
 const prettyHost = customHost || 'localhost';
 
-// Start your app.
-app.listen(port, host, (err) => {
-  if (err) {
-    return logger.error(err.message);
-  }
 
-  // Connect to ngrok in dev mode
-  if (ngrok) {
-    ngrok.connect(port, (innerErr, url) => {
-      if (innerErr) {
-        return logger.error(innerErr);
-      }
+// Start your app - works for both http and https servers
+var startApp = function(app) 
+{
+  server.listen(port, host, (err) => {
+    if (err) {
+      return logger.error(err.message);
+    }
 
-      logger.appStarted(port, prettyHost, url);
-    });
-  } else {
-    logger.appStarted(port, prettyHost);
-  }
-});
+    // Connect to ngrok in dev mode
+    if (ngrok) {
+      ngrok.connect(port, (innerErr, url) => {
+        if (innerErr) {
+          return logger.error(innerErr);
+        }
 
+        logger.appStarted(port, prettyHost, url);
+      });
+    } else {
+      logger.appStarted(port, prettyHost);
+    }
+  });
+}
+
+var server = http.createServer(app);
+console.log("about to start the app");
+startApp(server);
