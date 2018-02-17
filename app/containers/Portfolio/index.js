@@ -71,7 +71,7 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
     return (
       <div>
         <Helmet>
-          <title>Home Page</title>
+          <title>GDAX Portfolio</title>
           <meta name="description" content="GDAX Portfolio homepage" />
         </Helmet>
         <Header />
