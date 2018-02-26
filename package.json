@@ -220,7 +220,7 @@
     "fontfaceobserver": "2.0.9",
     "history": "4.6.3",
     "hoist-non-react-statics": "2.1.1",
-    "immutable": "3.8.1",
+    "immutable": "^3.8.2",
     "intl": "1.2.5",
     "invariant": "2.2.2",
     "ip": "1.1.5",
@@ -242,10 +242,11 @@
     "sanitize.css": "4.1.0",
     "styled-components": "2.0.0",
     "warning": "3.0.0",
-    "whatwg-fetch": "2.0.3"
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "add-asset-html-webpack-plugin": "2.0.1",
+    "axios": "^0.17.1",
     "babel-cli": "6.24.1",
     "babel-core": "6.24.1",
     "babel-eslint": "7.2.3",
