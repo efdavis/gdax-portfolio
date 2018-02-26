@@ -39,7 +39,7 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
   }
 
   componentWillMount() {
-    this.props.fetchHoldings();
+    this.props.getHoldings();
   }
 
   render() {
@@ -117,5 +117,5 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
 
 Portfolio.propTypes = {
   holdings: PropTypes.array,
-  fetchHoldings: PropTypes.func,
+  getHoldings: PropTypes.func,
 };

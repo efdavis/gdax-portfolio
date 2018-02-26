@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import axios from 'axios';
-import { loadHoldings, loadHoldingsFailure, loadHoldingsSuccess } from '../services/actions';
+import { fetchHoldings, errorMessage } from '../services/actions';
 
 
 function getHoldings() {
@@ -17,10 +17,10 @@ function* workerSaga() {
     const response = yield call(getHoldings);
     // console.log('saga response', response.data);
     const holdings = response.data;
-
-    yield put(loadHoldings(holdings));
+    yield put(fetchHoldings(holdings));
   } catch (error) {
-    yield put(loadHoldingsFailure(error));
+    const loadingError = 'There was an issue loading your holdings';
+    yield put(errorMessage(loadingError));
   }
 }
 

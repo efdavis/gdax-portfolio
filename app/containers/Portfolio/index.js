@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import saga from 'sagas';
 import injectSaga from 'utils/injectSaga';
 import reducer from '../../services/reducer';
-import { loadHoldings, fetchHoldings } from '../../services/actions';
+import { fetchHoldings } from '../../services/actions';
 import Portfolio from './view';
 import { makeHoldingsSelector } from '../../services/selectors';
 
@@ -15,8 +15,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getHoldings: (holdings) => dispatch(loadHoldings(holdings)),
-  fetchHoldings: () => dispatch(fetchHoldings()),
+  getHoldings: (holdings) => dispatch(fetchHoldings(holdings)),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
