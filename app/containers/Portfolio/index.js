@@ -31,18 +31,3 @@ export default compose(
   withConnect,
   withSaga,
 )(Portfolio);
-
-
-// extra
-// import { connect } from 'react-redux'
-
-// const VisibleTodoList = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(TodoList)
-
-
-// export default compose(
-//   withReducer,
-//   withConnect,
-// )(Portfolio);

@@ -3,10 +3,8 @@ import H1 from 'components/H1';
 import H2 from 'components/H2';
 import Header from 'components/Header';
 import styled from 'styled-components';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import wallet from 'mockWallet.json';
 import currentPrice from 'currentPrices.json';
 import userData from 'userData.json';
 
@@ -45,23 +43,13 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
   }
 
   render() {
-    const wallet = this.props.holdings || ['0', '0', '0', '0', '0'];
-    console.log('wallet: ', wallet);
+    const wallet = this.props.holdings || [0, 0, 0, 0, 0];
 
-    // API order?
-    // const walletBTC = wallet[0].available;
-    // const walletFiat = wallet[1].available;
-    // const walletLTC = wallet[2].available;
-    // const walletETH = wallet[3].available;
-    // const walletBCH = wallet[4].available;
-
-    // Mock order
     const walletLTC = wallet[1];
     const walletETH = wallet[2];
     const walletBTC = wallet[3];
-    const walletFiat = wallet[0];
+    const walletFiat = Number(wallet[0]).toFixed(2);
     const walletBCH = wallet[4];
-
 
     const priceLTC = currentPrice[0].available;
     const priceETH = currentPrice[1].available;
@@ -128,7 +116,6 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
 }
 
 Portfolio.propTypes = {
-  holdings: PropTypes.object,
-  getHoldings: PropTypes.func,
+  holdings: PropTypes.array,
   fetchHoldings: PropTypes.func,
 };
