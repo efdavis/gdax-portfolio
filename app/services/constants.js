@@ -1,0 +1,4 @@
+export const LOAD_HOLDINGS = 'Portfolio/LOAD_HOLDINGS';
+export const LOAD_HOLDINGS_SUCCESS = 'Portfolio/LOAD_HOLDINGS_SUCCESS';
+export const LOAD_HOLDINGS_FAILURE = 'Portfolio/LOAD_HOLDINGS_FAILURE';
+export const FETCH_HOLDINGS = 'Portfolio/FETCH_HOLDINGS';
