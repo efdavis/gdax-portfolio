@@ -23,7 +23,7 @@ const portfolioReducer = (state = initialState, action) => {
       .setIn(['holdings', 'data'], action.payload);
     case LOAD_HOLDINGS:
       return state
-      .setIn(['holdings', 'loading'], true);
+      .setIn(['holdings', 'data'], action.holdings);
     case LOAD_HOLDINGS_SUCCESS:
       return state
         .setIn(['holdings', 'loading'], false)

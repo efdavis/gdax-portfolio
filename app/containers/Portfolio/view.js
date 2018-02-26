@@ -29,33 +29,6 @@ const ColorThemer = styled.span`
    color: ${(props) => (props.posOrNeg > 0) ? 'green' : 'red'};
 `;
 
-// Fetches Holdings
-// TODO refactor into sagas
-// const getHoldings = () => {
-//   const url = 'http://localhost:3000/api/auth';
-//   // fetch(url).then((data) => console.log(data));
-//   return fetch(url).then((response) => response.json())
-//   .then((data) => data);
-// };
-
-// console.log(getHoldings());
-
-
-// axios.get('/api/auth')
-//   .then(({ data }) => {
-//     console.log(data, 'Data ');
-//     this.setState({
-//       wallet: [data],
-//     });
-//   })
-//   .catch((err) => {
-//     console.log(err, 'Data not retrieved');
-//   });
-
-// how to async call the data
-
-// console.log(wallet, 'wallet');
-
 export default class Portfolio extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
@@ -67,25 +40,13 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
     };
   }
 
-  componentDidMount() {
-    console.log('in here');
+  componentWillMount() {
     this.props.fetchHoldings();
   }
 
-  loadHoldings = () => {
-    const loadedHoldings = this.props.getHoldings();
-    this.setState = {
-      holdings: loadedHoldings,
-    };
-  }
-
   render() {
-    const { getHoldings } = this.props;
-    console.log(' this.props: ', this.props);
-
-    // const wallet = this.state.wallet;
-    const holdings1 = this.state.holdings;
-    console.log(holdings1);
+    const wallet = this.props.holdings || ['0', '0', '0', '0', '0'];
+    console.log('wallet: ', wallet);
 
     // API order?
     // const walletBTC = wallet[0].available;
@@ -95,11 +56,11 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
     // const walletBCH = wallet[4].available;
 
     // Mock order
-    const walletLTC = wallet[0].available;
-    const walletETH = wallet[1].available;
-    const walletBTC = wallet[2].available;
-    const walletFiat = wallet[3].available;
-    const walletBCH = wallet[4].available;
+    const walletLTC = wallet[1];
+    const walletETH = wallet[2];
+    const walletBTC = wallet[3];
+    const walletFiat = wallet[0];
+    const walletBCH = wallet[4];
 
 
     const priceLTC = currentPrice[0].available;
@@ -118,7 +79,6 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
 
     return (
       <div>
-        <button onClick={getHoldings}>Holdings</button>
         <Helmet>
           <title>Home Page</title>
           <meta name="description" content="GDAX Portfolio homepage" />

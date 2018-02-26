@@ -10,11 +10,13 @@ function getHoldings() {
   });
 }
 
+// TODO: stop saga from firing off
+
 function* workerSaga() {
   try {
     const response = yield call(getHoldings);
-    console.log('saga response', response);
-    const holdings = response.data.message;
+    // console.log('saga response', response.data);
+    const holdings = response.data;
 
     yield put(loadHoldings(holdings));
   } catch (error) {
@@ -27,18 +29,3 @@ export default function* holdingsSaga() {
   yield takeLatest(getHoldings, workerSaga);
 }
 
-
-// axios.get('/api/auth')
-//   .then(({ data }) => {
-//     console.log(data, 'Data ');
-//     this.setState({
-//       wallet: [data],
-//     });
-//   })
-//   .catch((err) => {
-//     console.log(err, 'Data not retrieved');
-//   });
-
-// function* rootSaga() {
-//   yield fork();
-// }
