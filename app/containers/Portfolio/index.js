@@ -7,11 +7,12 @@ import injectSaga from 'utils/injectSaga';
 import reducer from '../../services/reducer';
 import { fetchHoldings } from '../../services/actions';
 import Portfolio from './view';
-import { makeHoldingsSelector } from '../../services/selectors';
+import { makeHoldingsSelector, makePricesSelector } from '../../services/selectors';
 
 
 const mapStateToProps = createStructuredSelector({
   holdings: makeHoldingsSelector(),
+  prices: makePricesSelector(),
 });
 
 const mapDispatchToProps = (dispatch) => ({

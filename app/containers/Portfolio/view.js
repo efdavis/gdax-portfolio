@@ -44,6 +44,7 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
 
   render() {
     const wallet = this.props.holdings || [0, 0, 0, 0, 0];
+    console.log(this.props.prices, 'prices');
 
     const walletLTC = wallet[1];
     const walletETH = wallet[2];

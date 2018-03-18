@@ -2,6 +2,7 @@ import { fromJS } from 'immutable';
 
 import {
   FETCH_HOLDINGS,
+  FETCH_PRICES,
   ERROR,
 } from './constants';
 
@@ -14,9 +15,12 @@ const initialState = fromJS({
 
 const portfolioReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_HOLDINGS:
+    case FETCH_PRICES:
       return state
       .setIn(['holdings', 'data'], action.holdings);
+    case FETCH_HOLDINGS:
+      return state
+        .setIn(['holdings', 'prices'], action.prices);
     case ERROR:
       return state
         .setIn(['holdings', 'errorMessage'], action.error);

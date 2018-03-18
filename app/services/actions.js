@@ -9,6 +9,12 @@ export const fetchHoldings = (holdings) => ({
   holdings,
 });
 
+export const fetchPrices = (prices) => ({
+  type: FETCH_HOLDINGS,
+  prices,
+});
+
+
 export const errorMessage = (error) => ({
   type: ERROR,
   error,
