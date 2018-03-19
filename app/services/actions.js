@@ -2,6 +2,7 @@
 import {
   FETCH_HOLDINGS,
   ERROR,
+  FETCH_PRICES,
 } from './constants';
 
 export const fetchHoldings = (holdings) => ({
@@ -10,7 +11,7 @@ export const fetchHoldings = (holdings) => ({
 });
 
 export const fetchPrices = (prices) => ({
-  type: FETCH_HOLDINGS,
+  type: FETCH_PRICES,
   prices,
 });
 

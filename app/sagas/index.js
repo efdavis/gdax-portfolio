@@ -1,7 +1,7 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import axios from 'axios';
 import { fetchHoldings, fetchPrices, errorMessage } from '../services/actions';
-import { HOLDINGS_PATH, PRICES_PATH, FETCH_HOLDINGS, FETCH_PRICES } from '../services/constants';
+import { HOLDINGS_PATH, PRICES_PATH } from '../services/constants';
 
 function getApiCalls(path) {
   return axios({
@@ -9,8 +9,6 @@ function getApiCalls(path) {
     url: path,
   });
 }
-
-// TODO: stop saga from firing off
 
 function* getHoldings() {
   try {
@@ -27,7 +25,6 @@ function* getPrices() {
   try {
     const response = yield call(getApiCalls, PRICES_PATH);
     console.log('response: ', response);
-
     const prices = response.data;
     console.log('prices: ', prices);
     yield put(fetchPrices(prices));
@@ -37,8 +34,8 @@ function* getPrices() {
   }
 }
 
-// watcher saga
 export default function* holdingsSaga() {
-  // yield takeLatest(FETCH_HOLDINGS, getHoldings);
-  yield takeLatest(FETCH_HOLDINGS, getPrices);
+  yield getHoldings();
+  yield getPrices();
 }
+

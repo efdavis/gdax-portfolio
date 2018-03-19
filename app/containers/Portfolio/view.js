@@ -5,7 +5,6 @@ import Header from 'components/Header';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import currentPrice from 'currentPrices.json';
 import userData from 'userData.json';
 
 const TableWrapper = styled.div`
@@ -28,41 +27,37 @@ const ColorThemer = styled.span`
 `;
 
 export default class Portfolio extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  constructor(props) {
+  constructor(props) { // eslint-disable-line
     super(props);
-
-    this.state = {
-      currentPrice: [],
-      wallet: [],
-      holdings: [],
-    };
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    this.props.getPrices();
     this.props.getHoldings();
   }
 
   render() {
     const wallet = this.props.holdings || [0, 0, 0, 0, 0];
-    console.log(this.props.prices, 'prices');
+    const { prices } = this.props;
 
+    // TODO move a lot of this to the selectors
     const walletLTC = wallet[1];
     const walletETH = wallet[2];
     const walletBTC = wallet[3];
     const walletFiat = Number(wallet[0]).toFixed(2);
     const walletBCH = wallet[4];
 
-    const priceLTC = currentPrice[0].available;
-    const priceETH = currentPrice[1].available;
-    const priceBTC = currentPrice[2].available;
-    const priceBCH = currentPrice[4].available;
+    const priceLTC = prices.LTC;
+    const priceETH = prices.ETH;
+    const priceBTC = prices.BTC;
+    const priceBCH = prices.BCH;
 
     const usdLTC = Number((walletLTC * priceLTC).toFixed(2));
     const usdETH = Number((walletETH * priceETH).toFixed(2));
     const usdBTC = Number((walletBTC * priceBTC).toFixed(2));
     const usdBCH = Number((walletBCH * priceBCH).toFixed(2));
 
-    const totalHoldings = usdLTC + usdETH + usdBTC + usdBCH;
+    const totalHoldings = Number(usdLTC + usdETH + usdBTC + usdBCH).toFixed(2);
     const totalGainLoss = (totalHoldings - userData[0].money_in).toFixed(2);
     const percentGainLoss = ((1 - (totalHoldings / userData[0].money_in)) * -100).toFixed(1);
 
@@ -119,4 +114,6 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
 Portfolio.propTypes = {
   holdings: PropTypes.array,
   getHoldings: PropTypes.func,
+  getPrices: PropTypes.func,
+  prices: PropTypes.object,
 };

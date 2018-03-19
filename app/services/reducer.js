@@ -17,10 +17,10 @@ const portfolioReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PRICES:
       return state
-      .setIn(['holdings', 'data'], action.holdings);
+      .setIn(['holdings', 'prices'], action.prices);
     case FETCH_HOLDINGS:
       return state
-        .setIn(['holdings', 'prices'], action.prices);
+        .setIn(['holdings', 'data'], action.holdings);
     case ERROR:
       return state
         .setIn(['holdings', 'errorMessage'], action.error);
