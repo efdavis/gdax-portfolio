@@ -5,17 +5,19 @@ import { compose } from 'redux';
 import saga from 'sagas';
 import injectSaga from 'utils/injectSaga';
 import reducer from '../../services/reducer';
-import { fetchHoldings } from '../../services/actions';
+import { fetchHoldings, fetchPrices } from '../../services/actions';
 import Portfolio from './view';
-import { makeHoldingsSelector } from '../../services/selectors';
+import { makeHoldingsSelector, makePricesSelector } from '../../services/selectors';
 
 
 const mapStateToProps = createStructuredSelector({
   holdings: makeHoldingsSelector(),
+  prices: makePricesSelector(),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getHoldings: (holdings) => dispatch(fetchHoldings(holdings)),
+  getPrices: (prices) => dispatch(fetchPrices(prices)),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
