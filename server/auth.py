@@ -6,7 +6,7 @@
 #
 #   easy_install requests
 
-import json, hmac, hashlib, time, requests, base64, subprocess
+import json, hmac, hashlib, time, requests, base64, subprocess, sys
 from requests.auth import AuthBase
 
 
