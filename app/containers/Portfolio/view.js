@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import userData from 'userData.json';
+import Spacer from 'components/Spacer';
 
 const TableWrapper = styled.div`
   display: grid;
@@ -72,6 +73,7 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
         <H1>
             Portfolio
         </H1>
+        <Spacer />
         <TableWrapper>
 
           <TableColumn>
