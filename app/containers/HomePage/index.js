@@ -13,9 +13,11 @@ import React from 'react';
 import H1 from 'components/H1';
 import H2 from 'components/H2';
 import H3 from 'components/H3';
+import Spacer from 'components/Spacer';
 import Instructions from 'components/Instructions';
 import Column1 from 'components/Column1';
 import Header from 'components/Header';
+// import SmallHeader from 'components/SmallHeader';
 import { Helmet } from 'react-helmet';
 
 
@@ -34,6 +36,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         <H2>
           A way to figure out how much value you have across currencies
         </H2>
+        <Spacer></Spacer>
         <H3>
           <Column1>
             <Column1></Column1>
