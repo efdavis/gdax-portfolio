@@ -42,10 +42,11 @@ export default class Portfolio extends React.PureComponent { // eslint-disable-l
     const { prices } = this.props;
 
     // TODO move a lot of this to the selectors
-    const walletLTC = wallet[1];
-    const walletETH = wallet[2];
-    const walletBTC = wallet[3];
-    const walletFiat = Number(wallet[0]).toFixed(2);
+
+    const walletLTC = wallet[2];
+    const walletETH = wallet[3];
+    const walletBTC = wallet[0];
+    const walletFiat = Number(wallet[1]).toFixed(2);
     const walletBCH = wallet[4];
 
     const priceLTC = prices.LTC;
