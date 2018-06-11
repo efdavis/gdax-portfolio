@@ -7,10 +7,9 @@ url = {};
 
 const isHttps = packageJson.config.isHttps;
 if (isHttps) {
-  url = "https:";
-}
-else {
-  url = "http:";
+  url = 'https:';
+} else {
+  url = 'http:';
 }
 
 const divider = chalk.gray('\n-----------------------------------');

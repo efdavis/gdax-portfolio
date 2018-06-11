@@ -95,8 +95,9 @@ const startApp = function (server, port) {
 
 if (isHttps) {
   const httpsServer = https.createServer(credentials, app);
-  startApp(httpsServer, 8443); }
-else {
+  startApp(httpsServer, 8443);
+} else {
   const httpServer = http.createServer(app);
-  startApp(httpServer, httpPort); }
-  
+  startApp(httpServer, httpPort);
+}
+
