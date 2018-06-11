@@ -24,9 +24,7 @@ function* getHoldings() {
 function* getPrices() {
   try {
     const response = yield call(getApiCalls, PRICES_PATH);
-    console.log('response: ', response);
     const prices = response.data;
-    console.log('prices: ', prices);
     yield put(fetchPrices(prices));
   } catch (error) {
     const loadingError = 'There was an issue loading the currency prices';
