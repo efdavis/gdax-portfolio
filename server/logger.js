@@ -1,7 +1,17 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console, no-undef */
 
 const chalk = require('chalk');
 const ip = require('ip');
+const packageJson = require('../package');
+url = {};
+
+const isHttps = packageJson.config.isHttps;
+if (isHttps) {
+  url = "https:";
+}
+else {
+  url = "http:";
+}
 
 const divider = chalk.gray('\n-----------------------------------');
 
@@ -26,8 +36,8 @@ const logger = {
 
     console.log(`
 ${chalk.bold('Access URLs:')}${divider}
-Localhost: ${chalk.magenta(`http://${host}:${port}`)}
-      LAN: ${chalk.magenta(`http://${ip.address()}:${port}`) +
+Localhost: ${chalk.magenta(`${url}//${host}:${port}`)}
+      LAN: ${chalk.magenta(`${url}//${ip.address()}:${port}`) +
 (tunnelStarted ? `\n    Proxy: ${chalk.magenta(tunnelStarted)}` : '')}${divider}
 ${chalk.blue(`Press ${chalk.italic('CTRL-C')} to stop`)}
     `);

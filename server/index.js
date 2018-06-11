@@ -1,4 +1,5 @@
 /* eslint consistent-return:0 */
+/* eslint-disable no-undef */
 
 const express = require('express');
 const logger = require('./logger');
@@ -10,13 +11,21 @@ const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
 const resolve = require('path').resolve;
 
-const http = require('http');
-const https = require('https');
-const fs = require('fs');
+const packageJson = require('../package');
+const isHttps = packageJson.config.isHttps;
 
-const privateKey = fs.readFileSync('static/localhost.key', 'utf8');
-const certificate = fs.readFileSync('static/localhost.crt', 'utf8');
-const credentials = { key: privateKey, cert: certificate };
+const fs = require('fs');
+const https = require('https');
+const http = require('http');
+
+credentials = {};
+
+if (isHttps) {
+  const privateKey = fs.readFileSync('static/localhost.key', 'utf8');
+  const certificate = fs.readFileSync('static/localhost.crt', 'utf8');
+  credentials = { key: privateKey, cert: certificate };
+}
+
 
 const app = express();
 
@@ -84,8 +93,10 @@ const startApp = function (server, port) {
   });
 };
 
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer(credentials, app);
-
-startApp(httpServer, httpPort);
-startApp(httpsServer, 8443);
+if (isHttps) {
+  const httpsServer = https.createServer(credentials, app);
+  startApp(httpsServer, 8443); }
+else {
+  const httpServer = http.createServer(app);
+  startApp(httpServer, httpPort); }
+  
